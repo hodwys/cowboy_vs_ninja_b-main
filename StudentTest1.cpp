@@ -105,22 +105,21 @@ TEST_SUITE("Classes initialization tests and Team modification( add(),stillAlive
     TEST_CASE("Cowboy initialization") {
         Cowboy cowboy{"Bob", Point{2, 3}};
         CHECK(cowboy.hasboolets());
-         CHECK_EQ(cowboy.getName(), "Bob");
-         CHECK_EQ(cowboy.getLocation().distance(Point{2, 3}), 0);
-         CHECK_NE(cowboy.getLocation().distance(Point{3, 2}), 0);
+        CHECK_EQ(cowboy.getName(), "Bob");
+        CHECK_EQ(cowboy.getLocation().distance(Point{2, 3}), 0);
+        CHECK_NE(cowboy.getLocation().distance(Point{3, 2}), 0);
 
         CHECK(cowboy.isAlive());
     }
-}
 
-     TEST_CASE("YoungNinja initialization") {
-         YoungNinja ninja{"Bob", Point{2, 3}};
-         CHECK_EQ(ninja.getName(), "Bob");
-         CHECK_EQ(ninja.getLocation().distance(Point{2, 3}), 0);
-         CHECK_NE(ninja.getLocation().distance(Point{3, 2}), 0);
+    TEST_CASE("YoungNinja initialization") {
+        YoungNinja ninja{"Bob", Point{2, 3}};
+        CHECK_EQ(ninja.getName(), "Bob");
+        CHECK_EQ(ninja.getLocation().distance(Point{2, 3}), 0);
+        CHECK_NE(ninja.getLocation().distance(Point{3, 2}), 0);
 
-         CHECK(ninja.isAlive());
-     }
+        CHECK(ninja.isAlive());
+    }
 
     TEST_CASE("OldNinja initialization") {
         OldNinja old_ninja{"Bob", Point(2, 3)};
@@ -148,7 +147,7 @@ TEST_SUITE("Classes initialization tests and Team modification( add(),stillAlive
 
         Team2 team2{ninja};
         CHECK_EQ(team2.stillAlive(), 1);
-     }
+    }
 
     TEST_CASE("Team class add() and stillAlive() methods") {
         auto captain1 = create_oninja();
@@ -164,14 +163,12 @@ TEST_SUITE("Classes initialization tests and Team modification( add(),stillAlive
             team1.add(cur1);
             team2.add(cur2);
             CHECK_EQ(team1.stillAlive(), i + 2);
-            //////
             CHECK_EQ(team2.stillAlive(), i + 2);
         }
 
         // A team can have at most 10 teammates
         auto over = create_cowboy();
         CHECK_THROWS_AS(team1.add(over),std::runtime_error);
-        ///////
         CHECK_THROWS_AS(team2.add(over),std::runtime_error);
         delete over;
     }
@@ -182,7 +179,6 @@ TEST_SUITE("Classes initialization tests and Team modification( add(),stillAlive
 
         Team team1{captain};
         CHECK_THROWS_AS(Team{captain},std::runtime_error);
-        ///
         CHECK_THROWS_AS(Team2{captain},std::runtime_error);
 
         Team team2{captain2};
@@ -210,7 +206,7 @@ TEST_SUITE("Classes initialization tests and Team modification( add(),stillAlive
         CHECK_THROWS_AS(team2.add(teammate2),std::runtime_error);
         CHECK_THROWS_AS(team3.add(teammate2),std::runtime_error);
     }
-
+}
 
 
 TEST_SUITE("Battle related methods") {
@@ -525,7 +521,10 @@ TEST_SUITE("Battle simulations") {
         CHECK((!team2_c2->isAlive() && team2_c1->isAlive() && team2_c3->isAlive() && team2_c4->isAlive()));
 
         // At this point, the captain should be team2_c3; hence, the next enemy to be attacked by team2 should team_c3.
+        cout<<team_c3->print()<<endl;
         multi_attack(6, team2, team1);
+        cout<<team_c3->print()<<endl;
+        cout<<team_c3->isAlive()<<".//////////////////////////////////////////"<<team_c1->isAlive()<<"//.........."<< team_c2->isAlive()<<".//////////"<<endl;
         CHECK((!team_c3->isAlive() && team_c1->isAlive() && team_c2->isAlive()));
 
 

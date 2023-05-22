@@ -1,5 +1,5 @@
-#ifndef TEAM
-#define TEAM
+#ifndef TEAM_HPP
+#define TEAM_HPP
 
 #include <iostream>
 #include <fstream>
@@ -7,6 +7,8 @@
 #include <stdexcept>
 #include <cassert>
 #include <vector>
+#include <numeric>
+#include<limits>
 #include "Character.hpp"
 #include "Point.hpp"
 #include "Cowboy.hpp"
@@ -36,6 +38,8 @@ class Team{
         Character * find_enemy(Team * other);
         vector<Character*>& get_team();
         virtual ~Team();
+        Character * get_lead();
+
 
        // virtual ~Team();
        //////////////////////////////////////////////

@@ -11,8 +11,6 @@
 using namespace std;
 namespace ariel{
 
-// using namespace ariel;
-
 class Character{
 
     Point loc;
@@ -29,8 +27,6 @@ class Character{
 
         void Set_location(Point poin);
         void Set_target(int tar);
-        //void Set_name(string nam);
-
         bool isAlive();
         double distance(Character* other);
         void hit(int count_hit);

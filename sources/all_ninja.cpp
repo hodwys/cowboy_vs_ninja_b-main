@@ -6,8 +6,6 @@
 #include <cassert>
 #include "all_ninja.hpp"
 using namespace std;
-
-//using namespace ariel;
 namespace ariel{
 
 
@@ -15,18 +13,18 @@ all_ninja:: all_ninja(const string &nam,const Point& loca, int target, int speed
 }
 void all_ninja:: move(Character * malo){
     if(malo == nullptr){
-        throw std::runtime_error(" csdc");
+        throw std::runtime_error("nullptr pointer -move");
     }
     this->Set_location(this->getLocation().moveTowards(this->getLocation(),malo->getLocation(), this->get_speed() ));
 }
 
 void all_ninja::slash(Character * malo){
     if(malo == nullptr){
-        throw std::runtime_error(" csdc");
+        throw std::runtime_error("nullptr pointer - slash");
     }
     if(this != malo){
         if(this->isAlive() && malo->isAlive()){
-            int dis= this->getLocation().distance(malo->getLocation());
+            double dis= this->getLocation().distance(malo->getLocation());
             if(dis<1){
                 malo->Set_target(malo->getTarget()-40);
             }
@@ -35,11 +33,11 @@ void all_ninja::slash(Character * malo){
             }
         }
         else{
-            throw std::runtime_error("uy7t654");
+            throw std::runtime_error("somone not alive- slash");
         }
     }
     else{
-        throw std::runtime_error("dsgdfgdf");
+        throw std::runtime_error("(this == malo - slash");
     }
 } 
 int all_ninja:: get_speed(){

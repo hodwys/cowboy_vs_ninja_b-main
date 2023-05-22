@@ -10,7 +10,7 @@ using namespace std;
 //using namespace ariel;
 namespace ariel{
 
-Character::Character(const string& nam, const Point& loca, int targ) : loc(loca),target(targ),name(nam)  {
+Character::Character(const string& nam, const Point& loca, int targ) : name(nam), loc(loca),target(targ)  {
 }
 
 Character::Character( const string& nam ,const Point& loca) : loc(loca), name(nam){
@@ -42,15 +42,14 @@ double Character:: distance(Character* other){
 void Character::hit(int count_hit){
 
     if(count_hit < 0){
-        throw std::invalid_argument("agfdgdfg");
+        throw std::invalid_argument("count_hit mast be >0");
     }
 
     this->target = this->target-count_hit;
     if(this->target<=0){
         this->target = 0;
-      //  printf("im dead");
-        return;    }
-   // printf("im ok");
+        return;    
+    }
 }
 
 Point& Character:: getLocation(){

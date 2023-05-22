@@ -11,12 +11,9 @@
 
 using namespace std;
 namespace ariel{
-//using namespace ariel;
-
 class Cowboy : public Character{
 
     int balls;
-   // int targ;
 
     public:
    
@@ -27,10 +24,5 @@ class Cowboy : public Character{
         void reload();
         string print() override;
 };
-
-
-
 }
-
-
 #endif

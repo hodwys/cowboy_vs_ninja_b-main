@@ -37,6 +37,9 @@ namespace ariel{
     Character * malo= nullptr;
     double dis=0;
     for(Character *abc: other->team ){
+        if(abc== nullptr){
+            throw std::runtime_error("player is already");
+        }
         if(abc->isAlive()){
             dis= (this->head_team->distance(abc));
                 if(dis<min){
@@ -45,6 +48,9 @@ namespace ariel{
                 }
         }
     }
+      if(malo->isAlive()==0){
+        throw std::runtime_error("enemy daeylready"); 
+      }   
         return malo;
     }
     void Team::set_lead( Character * new_lead){
@@ -72,12 +78,6 @@ namespace ariel{
         set_lead(new_lead);
 
     }
-    // double dis = this->getLeader()->distance(player);
-                // if(dis < min ){
-                //     min = dis;
-                //     new_lead = hod;
-                // }
-                
 
     void Team::add(Character *add_team){
         if(add_team == nullptr){
@@ -131,95 +131,59 @@ void Team::attack(Team * other){
         throw std::invalid_argument("asfdgdf");
     }
     
-    // if(this->stillAlive()==0){
-    //     throw std::runtime_error("jhHJvhjbbjkb");
-    // }
-    
+    if(this->stillAlive()==0){
+        return;
+    }
     if(!(other->stillAlive()> 0)){
         throw std::runtime_error("jhhjvkdf");
     }
-
-    // if(this->stillAlive() == 0 || other->stillAlive() == 0 ){
-    //     throw std::runtime_error("ERROR: the enemy team is already dead");
-    // }
-   // if(){
-    //     throw std::runtime_error("ERROR: the enemy team is already dead");
-    // }
-
-    // if(this->stillAlive() == 0 || other->stillAlive() == 0){
-    //     throw std::runtime_error("123124");
-    // } 
-
     if(!(head_team->isAlive())){
         cheng_lead();
-        //this->set_lead(new_lead);
     }
-    
-//chose to attac
-    if(head_team){
-        Character* enemy = find_enemy(other);
-        if(enemy == nullptr){
-            return;
-        }
-        else{
-            
+       
+    Character* enemy = find_enemy(other);
 
     for(Character* abc: this->team ){
-        if(this->stillAlive()==0 || other->stillAlive()<=0){
-            return;  }
-        if(abc == nullptr || abc->isAlive()==0){return;}
-        if(enemy->isAlive()){
-    
-                if(Cowboy* cowboy = dynamic_cast<Cowboy*>(abc)){
-                    // if(cowboy == nullptr){
-                    //     throw std::runtime_error("123124");   
-                    // }
-                    if( cowboy->hasboolets()){
-                        cowboy->shoot(enemy); 
-                    }
-                    else{
-                        cowboy->reload(); 
-                    }
-                }
-                else{
-                    all_ninja* ninja = dynamic_cast<all_ninja*>(abc);
-                    // if(ninja == nullptr){
-                    //     throw std::runtime_error("123124");   
-                    // }
-                    if(ninja->getLocation().distance(enemy->getLocation())<1){
-                        ninja->slash(enemy);
-                    }
-                    else{
-                        
-                        ninja->move(enemy);
-                    }
-                }
-                
+
+        if(!enemy->isAlive()){
+            if(other->stillAlive() == 0){
+                return;
             }
-            // else{
-            //     throw std::runtime_error("123124");   
-            // }
+            enemy = find_enemy(other);
         }
         
-        // else{
-        //     if(other->stillAlive()>0){
-        //         enemy = find_enemy(other);
+        if(abc->isAlive()){
+            Cowboy* cowboy = dynamic_cast<Cowboy*>(abc);
+            if(cowboy != nullptr){
 
-        //     }
-        //     else{
-        //         return;
-        //     }
-        // }  
+                if(cowboy->hasboolets()){
+                    cowboy->shoot(enemy); 
+                }
+                else{
+                    cowboy->reload(); 
+                }
+            }
+            else{
+                all_ninja* ninja = dynamic_cast<all_ninja*>(abc);
+                if(ninja->getLocation().distance(enemy->getLocation())<1){
+                    ninja->slash(enemy);
+                }
+                else{
+                        
+                    ninja->move(enemy);
+                    }
+                }
+            
+            }
     }
 }
 
-        }
-    
-
-
-
 vector<Character*>& Team::get_team(){
     return this->team;
+}
+
+Character* Team:: get_lead(){
+    return this->head_team;
 }
 ////////////////////////////////////////////////
 Team::~Team(){
@@ -243,6 +207,8 @@ Team::~Team(){
         }
         return *this;
     }
+
+
 
 //////////////////////////////////////////
 ///דיסקטרטור
