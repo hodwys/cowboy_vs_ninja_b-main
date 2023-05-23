@@ -10,10 +10,10 @@
     void Team2::add(Character *add_team)
     {
         if(add_team == nullptr){
-            throw std::runtime_error("player is already in a team");
+            throw std::runtime_error(" unllptr - add");
         }
         if(add_team->get_in_team()){
-            throw std::runtime_error("plיחיחn a team");
+            throw std::runtime_error("already un team");
         }
 
             if(get_team().size()<10){
@@ -25,9 +25,5 @@
                 throw runtime_error("the team already 10 player");
             }
         }
-
-    
-
-
 
 };

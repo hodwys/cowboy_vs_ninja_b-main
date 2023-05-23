@@ -15,18 +15,14 @@ Character * SmartTeam::find_best_enemy(Team * other , Character* cur , int type)
 
     double prio = std::numeric_limits<double>::max();
     Character* beast_enemy = nullptr;
-    //between 0-110
+
     double prio_cow = std::numeric_limits<double>::max();
-    //between
+    
     double prio_nin = std::numeric_limits<double>::max();
 
 
-    //coboy
-
-        //  מי תוקף
-
     for(Character * enemy : other->get_team()){
-        // אם אני קאבואי
+         // if i cowboy
         if(type ==0){
             Cowboy* cowboy = dynamic_cast<Cowboy*>(cur);
 
@@ -44,7 +40,7 @@ Character * SmartTeam::find_best_enemy(Team * other , Character* cur , int type)
         }
     
 
-        //ninja אם אני
+        // if i nunja
         else{
             all_ninja* ninja = dynamic_cast<all_ninja*>(cur);
             Point cur_Point = cur->getLocation();
@@ -72,9 +68,6 @@ Character * SmartTeam::find_best_enemy(Team * other , Character* cur , int type)
     }
 
     return beast_enemy;
-    // befor return
-    //if( == nullpoint || ->isalive()==0)
-
 }
 
 

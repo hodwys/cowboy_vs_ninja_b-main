@@ -9,8 +9,6 @@
 #include <cassert>
 using namespace std;
 
-//using namespace ariel;
-
 namespace ariel{
 
 class Point{

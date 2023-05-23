@@ -7,11 +7,8 @@
 #include "TrainedNinja.hpp"
 using namespace std;
 
-//using namespace ariel;
 namespace ariel{
-TrainedNinja::TrainedNinja(string nam, Point poin):all_ninja(nam, poin, 120,12){
-}
     
-    
-
+    TrainedNinja::TrainedNinja(string nam, Point poin):all_ninja(nam, poin, 120,12){
+    }
 }

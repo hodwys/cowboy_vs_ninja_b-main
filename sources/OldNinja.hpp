@@ -11,7 +11,6 @@
 #include "all_ninja.hpp"
 using namespace std;
 namespace ariel{
-//using namespace ariel;
 
 class OldNinja : public all_ninja{
 

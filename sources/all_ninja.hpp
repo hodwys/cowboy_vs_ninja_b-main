@@ -1,5 +1,5 @@
-#ifndef ALL_NINJA
-#define ALL_NINJA
+#ifndef ALL_NINJA_HPP
+#define ALL_NINJA_HPP
 
 #include <iostream>
 #include <fstream>

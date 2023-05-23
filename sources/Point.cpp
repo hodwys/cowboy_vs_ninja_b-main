@@ -8,7 +8,6 @@
 #include <cmath>
 using namespace std;
 
-//using namespace ariel;
 namespace ariel{
  
    
@@ -18,8 +17,7 @@ Point::Point(){
 }
 
 Point::Point(double poin_x, double poin_y) : X(poin_x), Y(poin_y){
-// this->X = poin_x;
-// this->Y = poin_y;
+
 }
 
 
@@ -50,7 +48,6 @@ double Point::distance(Point poin){
 
 string Point::print(){
     string s = "(" + to_string(this->Get_X()) + "," + to_string(this->Get_Y())+")";
-   // cout<<s<<endl;
     return s; 
 }
 

@@ -40,8 +40,6 @@ class Team{
         virtual ~Team();
         Character * get_lead();
 
-
-       // virtual ~Team();
        //////////////////////////////////////////////
         Team(const Team& other);
         Team& operator=(const Team& other);

@@ -9,7 +9,6 @@
 #include "all_ninja.hpp"
 using namespace std;
 namespace ariel{
-//using namespace ariel;
 
 class TrainedNinja : public all_ninja{
     int balls;

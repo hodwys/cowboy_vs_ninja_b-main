@@ -9,8 +9,7 @@
 #include"OldNinja.hpp"
 using namespace std;
 namespace ariel{
-//using namespace ariel;
-
+    
 OldNinja:: OldNinja(const string& nam, const Point& poin):all_ninja(nam,poin, 150, 8){
 }
 
